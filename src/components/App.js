@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { getNotes, saveNotes, deleteNote } from '../actions/notesAction';
 import NoteCard from './NoteCard';
-
+import { getUser } from '../actions/userAction';
 class App extends Component {
 
 constructor(props){
@@ -23,6 +23,7 @@ constructor(props){
 // when app loads
 componentDidMount(){
   this.props.getNotes();
+  this.props.getUser();
 }
 
 handleChange(event){
@@ -107,8 +108,9 @@ handleSubmit(event){
 
 function mapStateToProps(state, ownProps){
   return {
-    notes: state.notes
+    notes: state.notes,
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { getNotes, saveNotes, deleteNote })(App);
+export default connect(mapStateToProps, { getNotes, saveNotes, deleteNote, getUser })(App);
