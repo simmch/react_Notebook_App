@@ -47,18 +47,7 @@ handleSubmit(event){
   })
 }
 
-renderMessages(){
-  return _.map(this.props.notes, (value, key) => {
-    return (
 
-      <NoteCard key={key} className="col-sm-6">
-        <h2>{value.title}</h2>
-        <p>{value.body}</p> 
-        <button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>Delete</button>
-      </NoteCard>
-    );
-  });
-}
 
   render() {
     return (
@@ -99,6 +88,21 @@ renderMessages(){
       </div>
     );
   }
+
+
+  renderMessages(){
+    return _.map(this.props.notes, (value, key) => {
+      return (
+  
+        <NoteCard key={key} className="col-sm-6">
+          <h2>{value.title}</h2>
+          <p>{value.body}</p> 
+          <button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>Delete</button>
+        </NoteCard>
+      );
+    });
+  }
+
 }
 
 function mapStateToProps(state, ownProps){
