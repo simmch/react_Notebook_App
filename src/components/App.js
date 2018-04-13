@@ -22,10 +22,10 @@ constructor(props){
 }
 
 // when app loads
-componentDidMount(){
-  this.props.getNotes();
-  this.props.getUser();
-}
+// componentDidMount(){
+//   this.props.getNotes();
+//   this.props.getUser();
+// }
 
 handleChange(event){
   this.setState({

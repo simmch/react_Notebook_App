@@ -12,6 +12,8 @@ import thunk from 'redux-thunk';
 import {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
 import Header from './routes/Header';
 import Login from './components/Login';
+import LoadingComponent from './components/LoadingComponent';
+import AuthenticatedComponent from './components/AuthenticatedComponent';
 
 // store
 // first argument is store
@@ -22,13 +24,17 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 ReactDOM.render(
 <Provider store={store}> 
     <BrowserRouter>
+    <LoadingComponent>
     <div>
         <Header />
         <Switch>
             <Route path="/login" component={Login} exact={true} />
+            <AuthenticatedComponent>
             <Route path="/" component={App} exact={true} />
+            </AuthenticatedComponent>
         </Switch>
     </div> 
+    </LoadingComponent>
     </BrowserRouter>
 </Provider>, 
 document.getElementById('root')
