@@ -1,14 +1,30 @@
-import { GET_NOTES } from '../actionTypes';
+import { GET_NOTES, NOTES_STATUS } from '../actionTypes';
 import { database } from '../components/firebase';
 
 export function getNotes(){
     return dispatch => {
+        // as soon as this function starts, show loading is true
+        dispatch({
+            type: NOTES_STATUS, 
+            payload: true
+        });
         database.on('value', snapshot => {
             dispatch ({
                 type: GET_NOTES,
                 payload: snapshot.val()
-            })
-        })
+            });
+        // when notes are received show loading to false
+            dispatch({
+            type: NOTES_STATUS, 
+            payload: false
+            },
+        () => {
+                dispatch({
+                    type: NOTES_STATUS,
+                    payload: -1
+                })
+            });
+        });
     };
 };
 

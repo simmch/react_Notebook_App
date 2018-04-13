@@ -3,7 +3,8 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { getNotes, saveNotes, deleteNote } from '../actions/notesAction';
 import NoteCard from './NoteCard';
-import { getUser } from '../actions/userAction';
+import { getUser } from '../actions/userAction.js';
+
 class App extends Component {
 
 constructor(props){
@@ -54,7 +55,7 @@ handleSubmit(event){
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-sm-4 offset-sm-4">
+          <div className="col-sm-6 offset-sm-3">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input 
@@ -90,7 +91,7 @@ handleSubmit(event){
     );
   }
 
-
+  // Listing notes
   renderMessages(){
     return _.map(this.props.notes, (value, key) => {
       return (
