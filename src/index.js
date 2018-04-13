@@ -21,15 +21,17 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 
 
 // provide the store to react
+// Additonally, keeping the header inside authenication component
+// keeps people from seeing navigation unless they are logged in
 ReactDOM.render(
 <Provider store={store}> 
     <BrowserRouter>
     <LoadingComponent>
     <div>
-        <Header />
         <Switch>
             <Route path="/login" component={Login} exact={true} />
             <AuthenticatedComponent>
+            <Header />
             <Route path="/" component={App} exact={true} />
             </AuthenticatedComponent>
         </Switch>
