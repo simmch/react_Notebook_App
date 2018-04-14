@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getNotes, saveNotes, deleteNote } from '../actions/notesAction';
 import NoteCard from './NoteCard';
 import { getUser } from '../actions/userAction.js';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
 
@@ -21,12 +22,6 @@ constructor(props){
   this.handleSubmit = this.handleSubmit.bind(this);
 }
 
-// when app loads
-// componentDidMount(){
-//   this.props.getNotes();
-//   this.props.getUser();
-// }
-
 handleChange(event){
   this.setState({
     [event.target.name]: event.target.value
@@ -37,7 +32,8 @@ handleSubmit(event){
   event.preventDefault();
   const note = {
     title: this.state.title,
-    body: this.state.body
+    body: this.state.body,
+    uid: this.props.user.uid
   }
  this.props.saveNotes(note);
 
@@ -93,13 +89,16 @@ handleSubmit(event){
 
   // Listing notes
   renderMessages(){
-    return _.map(this.props.notes, (value, key) => {
+    return _.map(this.props.notes, (note, key) => {
       return (
   
-        <NoteCard key={key} className="col-sm-6">
-          <h2>{value.title}</h2>
-          <p>{value.body}</p> 
-          <button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>Delete</button>
+        <NoteCard key={key}>
+        <Link to={`/${key}`}>
+          <h2>{note.title}</h2>
+        </Link>
+          <p>{note.body}</p> 
+          {note.uid === this.props.user.uid && 
+          (<button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>Delete</button>)}
         </NoteCard>
       );
     });
