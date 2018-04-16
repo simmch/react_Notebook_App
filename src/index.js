@@ -16,12 +16,14 @@ import LoadingComponent from './components/LoadingComponent';
 import AuthenticatedComponent from './components/AuthenticatedComponent';
 import NoteDetail from './components/NoteDetail';
 
-// store
-// first argument is store
+// Create the store
+// We pull in rootReducer from index.js under reducers
+// Because it combines all reducers from    the project/reducer directory
+// Into the store.
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 
-// provide the store to react
+// provide the redux store to react
 // Additonally, keeping the header inside authenication component
 // keeps people from seeing navigation unless they are logged in
 ReactDOM.render(
