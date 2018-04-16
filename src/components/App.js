@@ -97,8 +97,16 @@ handleSubmit(event){
           <h2>{note.title}</h2>
         </Link>
           <p>{note.body}</p> 
-          {note.uid === this.props.user.uid && 
-          (<button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>Delete</button>)}
+          {note.uid === this.props.user.uid && (
+          <div>
+          <button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>
+          Delete
+          </button>
+          <button className="btn btn-info btn-xs float-right">
+          <Link className="editt" to={`/${key}/edit`}>Update</Link>
+          </button>
+          </div>
+        )}
         </NoteCard>
       );
     });

@@ -36,6 +36,10 @@ export function deleteNote(id){
     return dispatch => database.child(id).remove();
 }
 
+export function updateNote(id, note){
+    return dispatch => database.child(id).update(note);
+}
+
 export function saveComment(noteId, comment){
     return dispatch => {
         // pushing comments to firebase DB

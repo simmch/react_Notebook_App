@@ -15,6 +15,7 @@ import Login from './components/Login';
 import LoadingComponent from './components/LoadingComponent';
 import AuthenticatedComponent from './components/AuthenticatedComponent';
 import NoteDetail from './components/NoteDetail';
+import NoteEdit from './components/NoteEdit';
 
 // Create the store
 // We pull in rootReducer from index.js under reducers
@@ -35,8 +36,9 @@ ReactDOM.render(
             <Route path="/login" component={Login} exact={true} />
             <AuthenticatedComponent>
             <Header />
-            <Route path="/" component={App} exact={true} />
+            <Route path="/:id/edit" component={NoteEdit} exact={true} />
             <Route path="/:id" component={NoteDetail} exact={true} />
+            <Route path="/" component={App} exact={true} />
             </AuthenticatedComponent>
         </Switch>
     </div> 
