@@ -78,6 +78,7 @@ class NoteEdit extends Component {
                         <button className="btn btn-primary col-md-12">Save Me</button>
                       </div>
                     </form>
+                    <Link to="/">Back</Link>
                 
                   </div>
                 </div>
