@@ -30,11 +30,14 @@ class Login extends Component {
                         <h1>NOTE APP - {new Date().getFullYear()}</h1>
                         <h2>Login to your personal Journal App</h2>
                     </div>
-
-                <div className="col-md-6 offset-md-3">
-                    <button className="btn btn-success btn-lg" onClick={this.props.googleLogin}>Login with Google</button>
                 </div>
 
+                <div className="row">
+                <div className="col-sm-12">
+                <div className="col-md-6 offset-md-3">
+                    <button className="btn btn-info btn-lg container-fluid" onClick={this.props.googleLogin}>Login with Google</button>
+                </div>
+                </div>
                 </div>
             </div>
         )

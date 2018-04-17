@@ -51,7 +51,12 @@ handleSubmit(event){
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-sm-6 offset-sm-3">
+
+        <div className="col-sm-2 text-center">
+        <img src={this.props.user.photoURL} height="150px" className="img img-responsive rounded-circle" style={{ padding: '20px' }}/>
+        <h5 className="username">Welcome back, {this.props.user.displayName}!</h5>
+        </div>
+          <div className="col-sm-8">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input 
